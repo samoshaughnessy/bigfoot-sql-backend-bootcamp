@@ -2,7 +2,7 @@ import cors from "cors";
 import express from "express";
 
 import db from "./db/models/index.cjs";
-const { sighting } = db;
+const { sighting, comment } = db;
 console.log("ok", sighting);
 
 const PORT = 3000;
@@ -46,6 +46,28 @@ app.post("/sighting", async (req, res) => {
   });
 
   res.json({ message: "Success" });
+});
+
+app.get("/sightings/:id/comments", async (req, res) => {
+  // find by something
+  let data = await comment.findAll({
+    where: {
+      SightingId: req.params.id,
+    },
+  });
+
+  console.log(data);
+
+  res.send(data);
+});
+
+app.post("/sightings/:id/comments", async (req, res) => {
+  await comment.create({
+    content: req.body.content,
+    SightingId: req.params.id,
+  });
+
+  res.send("done");
 });
 
 app.listen(PORT, () => {
