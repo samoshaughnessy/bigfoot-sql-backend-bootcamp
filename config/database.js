@@ -2,9 +2,9 @@ require("dotenv").config();
 
 module.exports = {
   development: {
-    username: process.env.DB_USERNAME,
+    username: "postgres",
     password: null,
-    database: process.env.DB_NAME,
+    database: "bigfoot_app_development",
     host: process.env.DB_HOST,
     dialect: "postgres",
     dialectOptions: {
@@ -15,9 +15,9 @@ module.exports = {
     },
   },
   production: {
-    username: process.env.DB_USERNAME,
+    username: "postgres",
     password: null,
-    database: process.env.DB_NAME,
+    database: "bigfoot_app_development",
     host: process.env.DATABASE_URL,
     dialect: "postgres",
     dialectOptions: {
