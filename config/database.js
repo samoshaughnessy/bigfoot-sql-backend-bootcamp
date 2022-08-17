@@ -5,7 +5,7 @@ module.exports = {
     username: process.env.USERNAME,
     password: null,
     database: process.env.DATABASE,
-    host: process.env.HOST,
+    host: process.env.DATABASE_URL,
     dialect: "postgres",
     dialectOptions: {
       ssl: {
@@ -18,7 +18,7 @@ module.exports = {
     username: process.env.USERNAME,
     password: null,
     database: process.env.DATABASE,
-    host: process.env.HOST,
+    host: process.env.DATABASE_URL,
     dialect: "postgres",
     dialectOptions: {
       ssl: {
