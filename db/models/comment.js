@@ -9,16 +9,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.sighting, { as: "sighting" });
     }
   }
   Comment.init(
     {
       content: DataTypes.STRING,
-      SightingId: DataTypes.INTEGER,
+      SightingId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "sighting",
+          key: "id",
+        },
+      },
     },
     {
       sequelize,
       modelName: "comment",
+      underscored: true,
     }
   );
   return Comment;
