@@ -27,6 +27,8 @@ let sequelize;
 sequelize = new Sequelize(process.env.DATABASE_URL, {
   protocol: "postgres",
   dialect: "postgres",
+  username: process.env.USERNAME,
+  database: process.env.DATABASE,
   logging: true,
   dialectOptions: {
     ssl: {
