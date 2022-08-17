@@ -4,11 +4,11 @@ const CategoriesController = require("./Controllers/CategoriesController.js");
 const SightingController = require("./Controllers/SightingController.js");
 const CategoriesRouter = require("./Routers/CategoriesRouter.js");
 const SightingsRouter = require("./Routers/SightingRouter.js");
-
+require("dotenv").config();
 const db = require("./db/models/index.js");
 const { sighting, comment, category, create_sighting_categories } = db;
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
