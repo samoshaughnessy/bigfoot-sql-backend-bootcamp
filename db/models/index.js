@@ -12,13 +12,14 @@ console.log(config);
 const db = {};
 
 let sequelize;
-
-sequelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
-  config
-);
+sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
+});
 
 fs.readdirSync(__dirname)
   .filter((file) => {
