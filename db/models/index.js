@@ -11,7 +11,6 @@ const config = require("../../config/database.js")[env];
 console.log(config);
 const db = {};
 
-let sequelize;
 // if (config.use_env_variable) {
 //   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 // } else {
@@ -24,19 +23,16 @@ let sequelize;
 //   );
 // }
 
-sequelize = new Sequelize(process.env.DATABASE_URL, {
-  protocol: "postgres",
-  dialect: "postgres",
-  username: "postgres",
-  database: "bigfoot_app_development",
-  logging: true,
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
-});
+var database = process.env.DATABASE_URL || "bigfoot_app_development";
+let sequelize = "";
+
+if (process.env.DATABASE_URL) {
+  sequelize = new Sequelize(database);
+} else {
+  sequelize = new Sequelize(database, "postgres", "", {
+    dialect: "postgres",
+  });
+}
 
 fs.readdirSync(__dirname)
   .filter((file) => {
