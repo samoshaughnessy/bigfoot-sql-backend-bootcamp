@@ -25,6 +25,8 @@ let sequelize;
 // }
 
 sequelize = new Sequelize(process.env.DATABASE_URL, {
+  protocol: "postgres",
+  logging: true,
   dialectOptions: {
     ssl: {
       require: true,
