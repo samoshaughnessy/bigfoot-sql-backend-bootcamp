@@ -17,6 +17,11 @@ const db = {};
 let sequelize;
 
 if (process.env.DATABASE_URL) {
+  console.log(process.env.DB_USERNAME);
+  console.log(process.env.DB_NAME);
+  console.log(process.env.DB_DIALECT);
+  console.log(process.env.DB_HOST);
+
   console.log("URLURL");
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialectOptions: {
