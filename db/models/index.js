@@ -10,11 +10,14 @@ console.log("env", env);
 let config = require("../../config/database.js");
 console.log(config);
 config = config.production;
+console.log("PRODUCTION", config);
+
 const db = {};
 
 let sequelize;
 
 if (process.env.DATABASE_URL) {
+  console.log("URLURL");
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialectOptions: {
       ssl: {
@@ -25,6 +28,8 @@ if (process.env.DATABASE_URL) {
     dialect: process.env.DB_DIALECT,
   });
 } else {
+  console.log("FAILED");
+
   sequelize = new Sequelize(
     config.database,
     config.username,
