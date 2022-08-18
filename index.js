@@ -33,6 +33,7 @@ app.use("/categories", categoriesRouter.routes());
 
 app.listen(PORT, () => {
   console.log(`Express app listening on port ${PORT}!`);
+  console.log("WTF mate");
 });
 
 // app.get("/sightings", async (req, res) => {
