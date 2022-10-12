@@ -36,10 +36,13 @@ if (process.env.DATABASE_URL) {
   console.log("FAILED");
 
   sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
+    process.env.DB_NAME,
+    process.env.DB_USERNAME,
+    process.env.DB_PASSWORD,
+    {
+      host: process.env.DB_HOST,
+      dialect: process.env.DB_DIALECT,
+    }
   );
 }
 

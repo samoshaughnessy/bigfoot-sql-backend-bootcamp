@@ -1,0 +1,9 @@
+NODE_ENV=production
+PORT=3000
+
+DB_USERNAME=samoshaughnessy
+DB_NAME=bigfoot_app_development
+DB_DIALECT=postgres
+DB_HOST=127.0.0.1
+
+DB_LINK=postgres://postgres:d525107395a403c118a923b6e3ee1e6474c2e86611cb8859@big-foot-sql-postgres.internal:5432
